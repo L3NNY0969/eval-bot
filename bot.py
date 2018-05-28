@@ -30,7 +30,7 @@ async def help(ctx):
     em = discord.Embed(color=color, title='Commands')
     em.description = "I am a bot for evaluating python code."
     em.add_field(name='eval', value='Runs Python code. Great for testing. Also the main purpose of this bot.')
-    em.add_field(name='ping', value='Returns the bot's websocket latency.')
+    em.add_field(name='ping', value='Returns my websocket latency.')
     await ctx.send(embed=em)
     
     
