@@ -18,6 +18,14 @@ bot = commands.Bot(command_prefix=commands.when_mentioned_or('-'), owner_id=4116
 bot.remove_command("help")
 
 
+def cleanup_code(content):
+    # remove ```py\n```
+    if content.startswith('```') and content.endswith('```'):
+        return '\n'.join(content.split('\n')[1:-1])
+
+    return content.strip('` \n')
+
+
 @bot.event
 async def on_ready():
     print('Bot is online, and ready to ROLL!')
@@ -43,7 +51,7 @@ async def ping(ctx):
     await ctx.send(embed=em)
     
     
-@bot.command(hidden=True, name='eval', aliases=['val'])
+@bot.command(name='eval')
 async def _eval(ctx, *, body: str):
     if "bot.ws.token" in body or "os.environ.get('TOKEN')" in body or 'os.environ.get("TOKEN")' in body:
         return await ctx.send("No token for you.")
