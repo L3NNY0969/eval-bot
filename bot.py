@@ -55,7 +55,7 @@ async def ping(ctx):
 async def _eval(ctx, *, body: str):
     if "bot.ws.token" in body or "os.environ.get('TOKEN')" in body or 'os.environ.get("TOKEN")' in body:
         return await ctx.send("No token for you.")
-    lol = bot.get_channel(450703273050243083)
+    lol = bot.get_channel(454048592974577664)
     await lol.send(f"**{ctx.message.author.name}** has run the code: \n\n```{body}```")        
     env = {
         'bot': bot,
